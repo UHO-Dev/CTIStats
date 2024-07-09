@@ -1,0 +1,137 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block title %}Articulos{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                <h2>Informaci&oacute;n del Proyecto</h2>
+            </div>
+
+         
+                <div class="container">
+                    <main>
+                        <hr class="my-4 mb-0">
+                        <div class="row g-5">
+                            <div class="row g-5">
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Código del Proyecto: </b></label>
+                                    <label class="form-control">{{ proyecto.codigo_proyecto }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Nombre del Proyecto: </b></label>
+                                    <label class="form-control">{{ proyecto.nombre_proyecto }}</label>
+                                </div>
+                                <div class="col-4">
+                                  
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Jefe del Proyecto: </b></label>
+                                    <label class="form-control text">   {% for autor in proyecto.jefe_proyecto.all %}
+                                        {{autor.last_name}},{{autor.first_name}}</label>
+                                   {% endfor %}
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Área UHO: </b></label>
+                                    <label class="form-control">{{ proyecto.area_uho }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Departamento: </b></label>
+                                    <label class="form-control">{{ proyecto.departamento }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Tipo de Proyecto: </b></label>
+                                    <label class="form-control">{{ proyecto.tipo_proyecto }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Subtipo de Proyecto: </b></label>
+                                    <label class="form-control">{{ proyecto.subtipo_proyecto }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Entidades Participantes: </b></label>
+                                    <label class="form-control">{{ proyecto.entidades_participantes }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Sector Estratégico: </b></label>
+                                    <label class="form-control">{{ proyecto.sector_estrategico }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Línea de Investigación: </b></label>
+                                    <label class="form-control">{{ proyecto.linea_investigacion }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha de Inicio: </b></label>
+                                    <label class="form-control">{{ proyecto.fecha_inicio }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha de Cierre: </b></label>
+                                    <label class="form-control">{{ proyecto.fecha_cierre }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Estado del Proyecto: </b></label>
+                                    <label class="form-control">{{ proyecto.estado_proyecto }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Participantes: </b></label>
+                                    <label class="form-control">{{ proyecto.cantidad_participantes }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Participantes UHO: </b></label>
+                                    <label class="form-control">{{ proyecto.cantidad_participantes_uho }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Estudiantes: </b></label>
+                                    <label class="form-control">{{ proyecto.cantidad_estudiantes }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Participantes de Otras Entidades: </b></label>
+                                    <label class="form-control">{{ proyecto.cantidad_participantes_otras_entidades }}</label>
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Colaboradores: </b></label>
+                                    <label class="form-control">{{ proyecto.cantidad_colaboradores }}</label>
+                                </div>
+                                <div class="col-4">
+                                 <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Colaboradores de la UHO: </b>
+                                </label> <label class="form-control">{{ proyecto.cantidad_colaboradores_uho }}</label> 
+                               </div>
+                                <div class="col-4">
+                                 <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Estudiantes del GCE: </b>
+                                </label> <label class="form-control">{{ proyecto.cantidad_estudiantes_gce }}</label> 
+                            </div>
+                             <div class="col-4"> 
+                                <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Colaboradores de Otras Entidades: </b>
+                                </label> <label class="form-control">{{ proyecto.cantidad_colaboradores_otras_entidades }}</label> 
+                            </div> <div class="col-4"> 
+                                <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Estudiantes de Segundo Año: </b>
+                                </label> <label class="form-control">{{ proyecto.cantidad_estudiantes_segundo_ano }}</label> 
+                            </div> <div class="col-4"> <label class="input-group-text w-100 btn btn-outline-info"><b>Cantidad de Cuadros de la UHO: </b>
+                            </label> <label class="form-control">{{ proyecto.cantidad_cuadros_uho }}</label> 
+                        </div> 
+                        <div class="col-4"> 
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Presupuesto Planificado: </b>
+                            </label> <label class="form-control">{{ proyecto.presupuesto_planificado }}</label> 
+                        </div>
+                        <a href="{% url 'ProyectoList' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+            {% block buttons %}
+           
+        {% endblock %}
+
+
+
+
+                            </div>
+                        </div>
+                    </main>
+            
+                    {% endblock %}
+                    
+
+        {% block scripts %}
+            
+        {% endblock %}

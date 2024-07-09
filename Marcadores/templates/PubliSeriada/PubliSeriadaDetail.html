@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Articulos{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                <h2>Informaci&oacute;n del la Publicacion</h2>
+            </div>
+
+         
+                <div class="container">
+                    <main>
+                        <hr class="my-4 mb-0">
+                        <div class="row g-5">
+                            <div class="row g-5">
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Titulo: </b></label>
+                                    <label class="form-control">{{ publiseriada.titulo }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha de creacion: </b></label>
+                                    <label class="form-control">{{ publiseriada.fecha_creacion }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Facultad </b></label>
+                                    <label class="form-control">{{ publiseriada.facultad }}</label>
+                                </div>
+            
+                                <div class="col-6">
+                                  
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Investigador: </b></label>
+                                    <label class="form-control text">   {% for autor in publiseriada.autores.all %}
+                                        {{autor.last_name}},{{autor.first_name}}
+                                   </label>
+                                   {% endfor %}
+                                </div>
+                                <div class="col-6">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Departamento: </b></label>
+                                    <label class="form-control">{{ publiseriada.departamento }}</label>
+                                </div>
+            
+                                <div class="col-6">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Departamento: </b></label>
+                                    <label class="form-control">{{ publiseriada.categoriaCientifica }}</label>
+                                </div>
+            
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Issn: </b></label>
+                                    <label class="form-control">{{ publiseriada.issn }}</label>
+                                </div>
+
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Doi: </b></label>
+                                    <label class="form-control">{{ publiseriada.doi }}</label>
+                                </div>
+
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Pais: </b></label>
+                                    <label class="form-control">{{ publiseriada.pais }}</label>
+                                </div>
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Editorial: </b></label>
+                                    <label class="form-control">{{ publiseriada.editorial }}</label>
+                                </div>
+            
+                                <hr class="my-4">
+                                
+            {% block buttons %}
+        
+        {% endblock %}
+    <a class="btn btn-success" href="{% url 'PubliSeriadaList' %}"><b>Atras</b></a>
+
+
+                            </div>
+                        </div>
+                    </main>
+            
+                    {% endblock %}
+                    
+
+        {% block scripts %}
+            
+        {% endblock %}
+        

@@ -1,0 +1,135 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Publicaciones Seriadas{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+
+
+
+{% block main %}
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+            <h2>Crear Articulos</h2>
+        </div>    
+    
+        </div>
+    
+       
+            <hr class="my-4">
+            
+        <div class="row g-5">
+            <div class="col-md-15 col-lg-15">
+                <form class="needs-validation" action="" novalidate method="post">
+                    {% csrf_token %}
+                
+                    <div class="row g-3">
+                        
+                        <div class="col-sm-4">
+                            <label for="issn" class="form-label">ISSN</label>
+                            {{ form.issn }}
+                            <div class="invalid-feedback">
+                                Es requerido un ISSN válido.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="fecha_creacion" class="form-label">Fecha de Creación</label>
+                            {{ form.fecha_creacion }}
+                            <div class="invalid-feedback">
+                                Es requerida una fecha válida.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="categoriaCientifica" class="form-label">Categoría Científica</label>
+                            {{ form.categoriaCientifica }}
+                            <div class="invalid-feedback">
+                                Es requerida una categoría científica.
+                            </div>
+                        </div>
+
+                    
+
+                        <div class="col-sm-4">
+                            <label for="titulo" class="form-label">Título</label>
+                            {{ form.titulo }}
+                            <div class="invalid-feedback">
+                                Es requerido un título válido.
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <label for="facultad" class="form-label">Facultad</label>
+                            {{ form.facultad }}
+                            <div class="invalid-feedback">
+                                Es requerida una facultad válida.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            {{ form.departamento }}
+                            <div class="invalid-feedback">
+                                Es requerido un departamento válido.
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="autores" class="form-label">Autores</label>
+                            {{ form.autores }}
+                            <div class="invalid-feedback">
+                                Es requerido al menos un autor.
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <label for="doi" class="form-label">Doi</label>
+                            {{ form.doi }}
+                            <div class="invalid-feedback">
+                                Es requerido el Doi.
+                            </div>
+                        </div>
+                        
+                        <div class="col-4">
+                            <label for="editorial" class="form-label">Editorial</label>
+                            {{ form.editorial }}
+                            <div class="invalid-feedback">
+                                Es requerido el editorial.
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="pais" class="form-label">Pais</label>
+                            {{ form.pais }}
+                            <div class="invalid-feedback">
+                                Es requerido el pais.
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+               
+                    
+                    <div class="text-center div-btn">
+                        <button class="w-50 btn btn-primary btn-lg" type="submit">Guardar</button>
+                        <a href="{% url 'dashboard' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atrás</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    {% endblock %}
+  
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2024 Uho</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="{% url 'about' %}">Privacidad</a></li>
+            <li class="list-inline-item"><a href="{% url 'about' %}">Términos</a></li>
+            

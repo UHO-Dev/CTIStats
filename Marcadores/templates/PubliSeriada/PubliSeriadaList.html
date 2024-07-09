@@ -1,0 +1,65 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block css %}
+  
+{% endblock %}
+
+{% block title %}Listado de Articulos{% endblock %}
+
+{% block main %}
+
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Listado de Articulos</h2>
+    </div>
+  
+    <div class="table-container">
+        <table id="example" class="display responsive table table-striped table-bordered dt-responsive">
+            <thead class="bg-dark text-white">
+                    <tr>
+                        <th class="col-1">No</th>
+                        <th class="col-4">Autor/es</th>
+                        <th class="col-1">Titulo</th>
+                        <th class="col-2">ISSN</th>
+                        <th class="col-2">Fecha</th>
+                        <th class="col-1">Estado</th>
+                        <th class="col-1">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for PubliSeriada in articulo %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                {% for autor in PubliSeriada.autores.all %}
+                                    {{autor.last_name}} {{autor.first_name}},
+                                {% endfor %}
+                            </td>
+                            <td>{{PubliSeriada.titulo}}</td>
+                            <td>{{PubliSeriada.issn}}</td>
+                            <td>{{PubliSeriada.fecha}}</td>
+                            <td>{{PubliSeriada.aprobacion}}</td>
+                            <td>
+                            <a href="{% url 'PubliSeriadaDetail' PubliSeriada.id %}"><i class="fas fa-eye px-2 text-success"></i></a>
+                            {% if PubliSeriada.aprobacion == 'Pendiente' or PubliSeriada.aprobacion ==  'No Valido' %}
+                            <a href="{% url 'PubliSeriadaUpdate' PubliSeriada.id %}"><i class="fas fa-pen px-2 text-warning"></i></a>
+                            {% endif %}
+                            <a href="{% url 'PubliSeriadaDelete' PubliSeriada.id %}"><i class="fas fa-trash px-2 text-danger"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="container-btn">
+                <a class="btn btn-primary btn-dark add" href="{% url 'PubliSeriadaCreate' %}">A&ntilde;adir</a>
+                <a class="btn btn-primary btn-dark back" href="{% url 'dashboard' %}">Atr&aacute;s</a>  
+            </div> 
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/dataTable_init.js' %}"></script>
+    <script src="{% static 'libs/datatables-1.10.25/js/jquery.dataTables.min.js' %}"></script>
+{% endblock %}

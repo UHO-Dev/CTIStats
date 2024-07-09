@@ -1,0 +1,63 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="{% static 'css/inicio.css' %}" rel="stylesheet">
+    <!--Stylesheet-->
+</head>
+<body>
+    <div class="background">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+    </div>
+
+    <div class="container d-flex flex-column min-vh-100">
+        <div class="row flex-grow-1 justify-content-center align-items-center">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="header">
+                    <img src="{% static 'img\Id UHo-03-white.png' %}" alt="Logo" class="logo">
+                    <h1 class="subtitle">CTIStats</h1>
+                </div>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+
+                    {% if msg %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <b>{{ msg }}</b>
+                    </div>
+                    {% endif %}
+
+                    <div class="email mb-3">
+                        <label for="username" class="text-dark lead">Nombre de Usuario</label>
+                        <div class="sec-2">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input type="text" class="form-control" name="username" id="username">
+                        </div>
+                    </div>
+                    <div class="password mb-3">
+                        <label for="password" class="text-dark">Contraseña</label>
+                        <div class="sec-2">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password" class="form-control" name="password">
+                            <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <button class="login btn btn-primary w-100">Acceder</button>
+                </form>
+            </div>
+        </div>
+
+        <footer class="mt-auto text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holguín</p>
+        </footer>
+    </div>
+
+    {% block scripts %}
+    <script src="{% static 'js/login.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

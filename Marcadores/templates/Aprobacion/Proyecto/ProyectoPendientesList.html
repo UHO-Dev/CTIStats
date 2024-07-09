@@ -1,0 +1,70 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block css %}
+    
+{% endblock %}
+
+{% block title %}Listado de Proyecto{% endblock %}
+
+{% block main %}
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src={% static 'img\Id UHo-03-white.png' %}  alt="" width="200" height="100">
+        <h2>Listado de Proyectos</h2>
+    
+    </div>
+    <div class="col-sm-12">
+        <div class="table-container">
+            <table id="example" class="display responsive table table-striped table-bordered dt-responsive">
+                <thead class="bg-dark text-white">
+                <tr>      
+                    <th class="col-1">No</th>
+                    <th class="col-2">Codigo</th>
+                    <th class="col-1">Nombre</th>
+                    <th class="col-1">Jefe</th>
+                    <th class="col-2">Area</th>
+                    <th class="col-2">Estado</th>
+                    <th class="col-2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proyecto in proyecto_pendientes %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{proyecto.codigo_proyecto}}</td>
+                        <td>{{proyecto.nombre_proyecto}}</td>
+                        <td>
+                            {% for autor in premio.jefe_proyecto.all %}
+                                {{jefe_proyecto.last_name}},{{jefe_proyecto.first_name}}
+                            {% endfor %}
+                        </td>
+                    
+                        <td>{{proyecto.area_uho}}</td>
+
+                        <td>
+                            <b>
+                                <span class="badge bg-warning pill text-dark">
+                                    {{ proyecto.aprobacion }}
+                                </span>
+                            </b>
+                          
+                        <td>
+                            <a href="{% url 'ProyectoDetail' proyecto.id %}"><i class="fas fa-eye px-2 text-success"></i></a>
+                            <a href="{% url 'ProyectoUpdate' proyecto.id %}"><i class="fas fa-pen px-2 text-warning"></i></a>
+                            <a href="{% url 'ProyectoDelete' proyecto.id%}"><i class="fas fa-trash px-2 text-danger"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="container-btn">
+            <a class="btn btn-primary btn-dark add" href="{% url 'ProyectoCreate' %}">A&ntilde;adir</a>
+            <a class="btn btn-primary btn-dark back" href="{% url 'dashboard' %}">Atr&aacute;s</a>  
+        </div> 
+    </div>  
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/dataTable_init.js' %}"></script>
+    <script src="{% static 'libs/datatables-1.10.25/js/jquery.dataTables.min.js' %}"></script>
+{% endblock %}

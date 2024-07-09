@@ -1,0 +1,101 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block title %}Articulos{% endblock %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                <h2>Informaci&oacute;n del la Publicacion</h2>
+            </div>
+
+         
+                <div class="container">
+                    <main>
+                        <hr class="my-4 mb-0">
+                        <div class="row g-5">
+                            <div class="row g-5">
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>codigo_programa: </b></label>
+                                    <label class="form-control">{{ programa.codigo_programa }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha de nombre_programa: </b></label>
+                                    <label class="form-control">{{ programa.nombre_programa }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>director_programa </b></label>
+                                    <label class="form-control">{{ programa.director_programa }}</label>
+                                </div>
+            
+                                <div class="col-6">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>facultad: </b></label>
+                                    <label class="form-control">{{ programa.facultad }}</label>
+                                </div>
+            
+                                <div class="col-6">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>departamento: </b></label>
+                                    <label class="form-control">{{ programa.departamento }}</label>
+                                </div>
+            
+                                <div class="col-6">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Departamento: </b></label>
+                                    <label class="form-control">{{ programa.tipo_programa }}</label>
+                                </div>
+            
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Issn: </b></label>
+                                    <label class="form-control">{{ programa.descripcion }}</label>
+                                </div>
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Fecha Inicio: </b></label>
+                                    <label class="form-control">{{ programa.fecha_inicio }}</label>
+                                </div>
+
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Issn: </b></label>
+                                    <label class="form-control">{{ programa.fecha_fin }}</label>
+                                </div>
+
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Estado: </b></label>
+                                    <label class="form-control">{{ programa.estado_programa }}</label>
+                                </div>
+
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Issn: </b></label>
+                                    <label class="form-control">{{ programa.presupuesto_asignado }}</label>
+                                </div>
+            
+                                
+                                <div class="col-6 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> Issn: </b></label>
+                                    <label class="form-control">{{ programa.presupuesto_utilizado }}</label>
+                                </div>
+            
+                                <hr class="my-4">
+                                
+            {% block buttons %}
+            <a class="btn btn-success" href="{% url 'ProgramaList' %}"><b>Atras</b></a>
+        {% endblock %}
+
+
+
+                            </div>
+                        </div>
+                    </main>
+            
+                    {% endblock %}
+                    
+
+        {% block scripts %}
+            
+        {% endblock %}

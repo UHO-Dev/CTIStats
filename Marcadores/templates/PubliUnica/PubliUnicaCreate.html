@@ -1,0 +1,140 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Añadir Publicacion unica, libros {% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+
+{% block main %}
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>A&ntilde;adir Publicaci&oacute;n</h2>
+      
+      </div>
+
+      <div class="row g-5">
+        <div class="col-md-15 col-lg-15">
+          <form class="needs-validation" novalidate method="POST">
+            {% csrf_token %}
+       
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="titulo" class="form-label">Titulo</label>
+                {{ form.titulo }}
+                <div class="invalid-feedback">
+                  Es requerido un Titulo v&aacute;lido
+                </div>
+              </div>
+
+
+              <div class="col-sm-6">
+                <label for="isbn" class="form-label">ISBN</label>
+                {{ form.isbn }}
+                <div class="invalid-feedback">
+                  Es requerido que especifique el ISBN tipo
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="autores" class="form-label">Autor/res</label>
+                {{ form.autores }}
+                <div class="invalid-feedback">
+                  Es requerido la especialidad m&eacute;dica motivo de su certificado
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="departamento" class="form-label">Departamento</label>
+                {{ form.departamento }}
+                <div class="invalid-feedback">
+                  Es requerido un departamento.
+                </div>
+              </div>
+              
+
+              <div class="col-6">
+                <label for="fecha_creacion" class="form-label">Fecha de Publicaci&oacute;n</label>
+                {{ form.fecha_creacion }}
+                <div class="invalid-feedback">
+                  Por favor introduzca datos correctos
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="facultad" class="form-label">Facultad</label>
+                {{ form.facultad }}
+                <div class="invalid-feedback">
+                  Es requerido una Facultad
+                </div>
+              </div>
+
+              
+              <div class="col-6">
+                <label for="categoriaCientifica" class="form-label">CC</label>
+                {{ form.categoriaCientifica }}
+                <div class="invalid-feedback">
+                  Es requerido una Categoria
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="capitulo" class="form-label">capitulo</label>
+                {{ form.capitulo }}
+                <div class="invalid-feedback">
+                  Es requerido un capitulo
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="volumen" class="form-label">volumen</label>
+                {{ form.volumen }}
+                <div class="invalid-feedback">
+                  Es requerido un volumen
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="pais" class="form-label">pais</label>
+                {{ form.pais }}
+                <div class="invalid-feedback">
+                  Es requerido un pais
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="editorial" class="form-label">editorial</label>
+                {{ form.editorial }}
+                <div class="invalid-feedback">
+                  Es requerido un capitulo
+                </div>
+              </div>
+   
+
+            <hr class="my-4">
+            
+            <div class="text-center div-btn">
+              <a href="{% url 'PubliUnicaList' %}"><button class="w-50 btn btn-success btn-lg mt-0" type="submit">Guardar</button></a>
+              <a href="{% url 'dashboard' %}" class="w-50 btn btn-success btn-lg mt-0" style="margin-top: 20px;">Atr&aacute;s</a>          
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2023–2024</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#" class="text-decoration-none text-success"><b>Privacidad</b></a></li>
+        <li class="list-inline-item"><a href="#">Terminos</a></li>
+        <li class="list-inline-item"><a href="#">Soporte</a></li>
+      </ul>
+    </footer>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

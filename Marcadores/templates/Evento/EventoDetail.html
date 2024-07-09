@@ -1,0 +1,102 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Detalles del Evento{% endblock %}
+
+<link rel="stylesheet" href="{% static 'css\form-control text.css' %}">
+{% block main %} 
+    <div class="container">
+        <main>
+            <hr class="my-4">
+            <div class="row g-5">
+
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                    <h2>Detalles del Evento</h2>
+                </div>
+                <div class="container">
+                    <main>
+                        <hr class="my-4 mb-0">
+                        <div class="row g-5">
+                            <div class="row g-5">
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Caracter: </b></label>
+                                    <label class="form-control">{{ evento.caracter }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Tipo: </b></label>
+                                    <label class="form-control">{{ evento.tipo }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Titulo: </b></label>
+                                    <label class="form-control">{{ evento.titulo }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                  
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Participantes: </b></label>
+                                    <label class="form-control text">
+                                        {% for autor in evento.autores.all %}
+                                          {{autor.last_name}},{{autor.first_name}}
+                                       </label>
+                                   {% endfor %}
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>ISBN: </b></label>
+                                    <label class="form-control">{{ evento.isbn }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Publicacion: </b></label>
+                                    <label class="form-control">{{ evento.publicacion }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha: </b></label>
+                                    <label class="form-control">{{ evento.fecha }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Certificado: </b></label>
+                                    <label class="form-control">{{ evento.certificado }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Facultad: </b></label>
+                                    <label class="form-control">{{ evento.facultad }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Presencialidad: </b></label>
+                                    <label class="form-control">{{ evento.presencialidad }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <hr class="my-4">
+                        <hr class="my-4">
+
+                        
+                            </div>
+
+                            <hr class="my-4">
+
+                       
+                            <a class="btn btn-success" href="{% url 'PubliUnicaList' %}"><b>Atras</b></a>
+                     
+                    </div>
+                </div>
+            </main>
+        </div>
+{% endblock %}
+                        
+{% block buttons %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

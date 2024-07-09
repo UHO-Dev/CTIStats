@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Confirmaci&oacute;n{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/confirmDelete.css' %}">
+{% endblock %}
+
+{% block main %}
+<form class="needs-validation" action="#" novalidate method="post">
+    {% csrf_token %}
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-label">Confirmaci&oacute;n</h5>
+                    <a href="{% url 'ProyectoList' %}">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    Estas seguro de eliminar el Proyecto seleccionado: {{ object }}? Esta acci&oacute;n sera permanente.
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'ProyectoList' %}">
+                        <button type="button" class="btn btn-primary btn-dark">Cerrar</button>
+                    </a>
+                    <button type="submit" class="btn btn-primary btn-dark" style="margin:10px">Acceptar</button>
+                </div>
+            </div>
+        </div>
+</form>
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}
+
+
+

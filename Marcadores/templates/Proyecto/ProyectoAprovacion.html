@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Aprobar Proyecto{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/dash.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                <h2>A&ntilde;adir Proyecto</h2>
+                <p class="lead">A&ntilde;adir Proyecto</p>
+            </div>
+        
+            {% if form.error %}
+            {{form.error}}
+            {%endif%}
+            <div class="row g-5">
+                <div class="col-md-15 col-lg-15">
+                    <form class="needs-validation" novalidate method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-4">
+                                <label for="nombre" class="form-label">Titulo</label>
+                                {{ proyecto.titulo }}
+                                <div class="invalid-feedback">
+                                    Es requerido un nombre v&aacute;lido
+                                </div>
+                            </div>
+
+                        
+                                <div class="col-sm-4">
+                                    <label for="caracter" class="form-label">caracters</label>
+                                    {{ form.caracter}}
+                                   
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="autores" class="form-label">autores</label>
+                                    {{ form.autores }}
+                                    <div class="invalid-feedback">
+                                        Es requerido su Carnet de Identidad
+                                    </div>
+                                </div>
+    
+
+
+                
+                            <div class="col-6">
+                                <label for="publicacion" class="form-label">publicacion</label>
+                                {{ form.publicacion}}
+                            </div>
+
+                       
+
+
+                            <div class="col-sm-6">
+                                <label for="isbn" class="form-label">Numero isbn</label>
+                                {{ form.isbn }}
+                                <div class="invalid-feedback">
+                                    Es requerido que indique un numero isbn
+                                </div>
+                            </div>
+
+                        <div class="col-sm-6">
+                            <label for="fecha" class="form-label">Pfecha</label>
+                            {{ form.fecha}}
+                            <div class="invalid-feedback">
+                                Es un reach.
+                            </div>
+                        </div>
+
+                    <div class="col-sm-6">
+                        <label for="certificado" class="form-label">Certificado</label>
+                        {{ form.aprobacion}}
+                        <div class="invalid-feedback">
+                            Es necesrio que suba un certificadi.
+                        </div>
+                    </div>
+
+                  
+                  
+                        
+                        <div class="text-center" style="padding-top: 50px;">
+                            <button class="w-50 btn btn-primary btn-lg" type="submit">Guardar</button>
+                            <a href="{% url 'dashboard' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+      
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

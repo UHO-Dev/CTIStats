@@ -1,0 +1,351 @@
+{% extends 'index.html' %}
+{% load static %}
+        {% block css %}
+        <script src="{% static 'libs/highcharts/code/highcharts.js' %}"></script>
+        <script src="{% static 'libs/highcharts/code/modules/exporting.js' %}"></script>
+        <script src="{% static 'libs/highcharts/code/modules/accessibility.js' %}"></script>
+            <style type="text/css">
+
+                .highcharts-figure,
+                .highcharts-data-table table {
+                    min-width: 320px;
+                    max-width: 500px;
+                    margin: 1em auto;
+                }
+
+                #container {
+                    height: 400px;
+                }
+
+                .highcharts-data-table table {
+                    font-family: Verdana, sans-serif;
+                    border-collapse: collapse;
+                    border: 1px solid #ebebeb;
+                    margin: 10px auto;
+                    text-align: center;
+                    width: 100%;
+                    max-width: 500px;
+                }
+
+                .highcharts-data-table caption {
+                    padding: 1em 0;
+                    font-size: 1.2em;
+                    color: #555;
+                }
+
+                .highcharts-data-table th {
+                    font-weight: 600;
+                    padding: 0.5em;
+                }
+
+                .highcharts-data-table td,
+                .highcharts-data-table th,
+                .highcharts-data-table caption {
+                    padding: 0.5em;
+                }
+
+                .highcharts-data-table thead tr,
+                .highcharts-data-table tr:nth-child(even) {
+                    background: #f8f8f8;
+                }
+
+                .highcharts-data-table tr:hover {
+                    background: #f1f7ff;
+                }
+            </style>
+        {% endblock %}
+
+    
+        {% block main %}
+
+        <div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+            <nav>
+              <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
+               
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              
+                <div class="col">
+                    <div class="card">
+                      <div class="card-header">
+                     
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title">Investigadores</h5>
+                        <p class="card-text">Solo se cuentan a los <strong>Investigadores</strong> con cuentas activas.</p>
+                        
+                   
+        <div class="d-flex">
+            <div class="col-sm-6">
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                </figure>
+            </div>
+            <div class="col-sm-6">
+                <figure class="highcharts-figure">
+                    <div id="count_investigador_facultad"></div>
+                </figure>
+
+            </div>
+            <div class="card-footer text-muted">
+            
+            </div>
+            </div>
+       
+            <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                 
+                  </div>
+                  <div class="card-body">
+                   
+               
+    <div class="d-flex">
+        <div class="col-sm-6">
+            <figure class="highcharts-figure">
+                <div id="count_investigador_categoria_cientifica"></div>
+            </figure>
+        </div>
+        <div class="col-sm-6">
+            <figure class="highcharts-figure">
+                <div id="count_investigador_categoria_docente"></div>
+            </figure>
+
+    
+        </div>
+        <div class="card-footer text-muted">
+        
+        </div>
+        </div>
+   
+            
+       
+        </div>
+       
+      
+     </div>
+  </div>
+</div>
+       
+
+    
+
+      
+  </div>
+</div>
+              </div>
+            </div>
+            </div></div>
+
+       
+        {% endblock %}
+
+        {% block scripts %}
+        <script type="text/javascript">
+
+            Highcharts.chart('container', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Usuarios en el sistema',
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: 30,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%'],
+                        size: '110%'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Porcentaje',
+                    innerSize: '50%',
+                    data: [
+                        ['Licenciados', {{investigador_li}}],
+                        ['Doctores', {{investigador_mas}}],
+                        ['Masters', {{investigador_doc}}],
+                    ]
+                }]
+            });
+        
+             
+            Highcharts.chart('count_investigador_facultad', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Investigadores por Faultad',
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: 30,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%'],
+                        size: '110%'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Porcentaje',
+                    innerSize: '50%',
+                    data: [
+                    {% for i in count_investigador_facultad %}
+                    {
+                        name: '{{ i.facultad }}',
+                        y: {{ i.total }}
+                    },
+                    {% endfor %}
+                
+                    ]
+                }]
+            });
+            
+        
+
+                  
+            Highcharts.chart('count_investigador_categoria_cientifica', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Investigadores por Faultad',
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: 30,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%'],
+                        size: '110%'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Porcentaje',
+                    innerSize: '50%',
+                    data: [
+                    {% for i in count_investigador_categoria_cientifica %}
+                    {
+                        name: '{{ i.categoria_cientifica }}',
+                        y: {{ i.total }}
+                    },
+                    {% endfor %}
+                
+                    ]
+                }]
+            });
+            
+
+                  
+            Highcharts.chart('count_investigador_categoria_docente', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Investigadores por Categoria Docente',
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: 30,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%'],
+                        size: '110%'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Porcentaje',
+                    innerSize: '50%',
+                    data: [
+                    {% for i in count_investigador_categoria_docente %}
+                    {
+                        name: '{{ i.categoria_docente }}',
+                        y: {{ i.total }}
+                    },
+                    {% endfor %}
+                
+                    ]
+                }]
+            });
+            
+        </script>
+        {% endblock %}
+
+
+        

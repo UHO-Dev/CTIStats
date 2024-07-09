@@ -1,0 +1,144 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Editar Proyecto{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Editar</h2>
+      </div>
+      {% if form.error %}
+      {{form.error}}
+      {%endif%}
+      <div class="row g-5">
+          <div class="col-md-15 col-lg-15">
+              <form class="needs-validation" novalidate method="post">
+                  {% csrf_token %}
+                  <div class="row g-3">
+                      <div class="col-sm-4">
+                          <label for="codigo_proyecto" class="form-label">Código del Proyecto</label>
+                          {{ form.codigo_proyecto }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="nombre_proyecto" class="form-label">Nombre del Proyecto</label>
+                          {{ form.nombre_proyecto }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="jefe_proyecto" class="form-label">Jefe del Proyecto</label>
+                          {{ form.jefe_proyecto }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="area_uho" class="form-label">Área UHO</label>
+                          {{ form.area_uho }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="departamento" class="form-label">Departamento</label>
+                          {{ form.departamento }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="tipo_proyecto" class="form-label">Tipo de Proyecto</label>
+                          {{ form.tipo_proyecto }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="subtipo_proyecto" class="form-label">Subtipo de Proyecto</label>
+                          {{ form.subtipo_proyecto }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="entidades_participantes" class="form-label">Entidades Participantes</label>
+                          {{ form.entidades_participantes }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="sector_estrategico" class="form-label">Sector Estratégico</label>
+                          {{ form.sector_estrategico }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="linea_investigacion" class="form-label">Línea de Investigación</label>
+                          {{ form.linea_investigacion }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="fecha_inicio" class="form-label">Fecha de Inicio</label>
+                          {{ form.fecha_inicio }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="fecha_cierre" class="form-label">Fecha de Cierre</label>
+                          {{ form.fecha_cierre }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="estado_proyecto" class="form-label">Estado del Proyecto</label>
+                          {{ form.estado_proyecto }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_participantes" class="form-label">Cantidad de Participantes</label>
+                          {{ form.cantidad_participantes }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_participantes_uho" class="form-label">Cantidad de Participantes UHO</label>
+                          {{ form.cantidad_participantes_uho }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_estudiantes" class="form-label">Cantidad de Estudiantes</label>
+                          {{ form.cantidad_estudiantes }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_participantes_otras_entidades" class="form-label">Cantidad de Participantes de Otras Entidades</label>
+                          {{ form.cantidad_participantes_otras_entidades }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_colaboradores" class="form-label">Cantidad de Colaboradores</label>
+                          {{ form.cantidad_colaboradores }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_colaboradores_uho" class="form-label">Cantidad de Colaboradores UHO</label>
+                          {{ form.cantidad_colaboradores_uho }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_estudiantes_gce" class="form-label">Cantidad de Estudiantes GCE</label>
+                          {{ form.cantidad_estudiantes_gce }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_colaboradores_otras_entidades" class="form-label">Cantidad de Colaboradores de Otras Entidades</label>
+                          {{ form.cantidad_colaboradores_otras_entidades }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_estudiantes_segundo_ano" class="form-label">Cantidad de Estudiantes de Segundo Año</label>
+                          {{ form.cantidad_estudiantes_segundo_ano }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="cantidad_cuadros_uho" class="form-label">Cantidad de Cuadros UHO</label>
+                          {{ form.cantidad_cuadros_uho }}
+                      </div>
+                      <div class="col-sm-4">
+                          <label for="presupuesto_planificado" class="form-label"> Presupuesto</label>
+                          {{ form.presupuesto_planificado }}
+                      </div>
+            
+                  
+                  <div class="text-center" style="padding-top: 50px;">
+                      <button class="w-50 btn btn-primary btn-lg" type="submit">Guardar</button>
+                      <a href="{% url 'ProyectoList' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </main>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2024 Uho</p>
+      <ul class="list-inline">
+  
+      </ul>
+    </footer>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

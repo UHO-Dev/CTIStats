@@ -1,0 +1,279 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/carousel.css' %}"  rel="stylesheet">
+    <link href="{% static 'css/cards.css' %}"  rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      h1 {
+        text-shadow: 0 1px 0 #000,  
+        0 -1px 0 #000,
+        1px 0 0 #000,
+        -1px 0 0 #000; 
+      }
+    
+
+    </style>
+{% endblock %}
+    
+{% block main %}
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="static\img\uho.jpg" class="d-block w-100" alt="Descripción de la imagen">
+                <div class="container">
+                  <div class="carousel-caption text-start">
+                    <h1>Sistema de gestión de resultados e indicadores de Ciencia, Tecnología e Innovación (CTI) de la Universidad de Holguín.</h1>
+                    <p>.</p>
+                  
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="static\img\uho3.jpg" class="d-block w-100" alt="Descripción de la imagen">
+                <div class="container">
+                  <div class="carousel-caption">
+                    <h1>Vision</h1>
+                    <p> Ser una paltaforma confiable que se convierta en una herramienta para los Investigadores de la Universidad de Holguin</p>
+                 
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="static\img\uho1.jpg" class="d-block w-100" alt="Descripción de la imagen">
+                  <div class="carousel-caption text-end">
+                    <h1>Mision</h1>
+                    <p>La <strong>Dirección de Ciencia, Tecnología e Innovación.</strong> Tiene como mision dirigir las actividades de Ciencia, Tecnología e Innovación de la Universidad, acorde a la política trazada por el país y por la institución, así como promover los resultados de las ciencias en correspondencia con las necesidades del territorio y medir sus impactos.</p>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Three columns of text below the carousel -->
+            <div class="row container marketing">
+              <div class="col-lg-4">
+                <img class="bd-placeholder-img" width="100" height="100" src="static\img\users.svg"><title>Placeholder</title><rect width="50%" height="50%" fill="#777"/>
+                
+                <h2 class="fw-normal">¿Quienes somos?</h2>
+                <p>Una herramienta para apoyar a los investigadores y faciliatar el registro de marcadores de ciencia, tecnologia e innovacion</p>
+               
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="bd-placeholder-img" width="100" height="100" src="static\img\libros.svg" alt="Descripción de la imagen"role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+                <h2 class="fw-normal">¿Que registramos?</h2>
+                <p>A la fecha, articulos, publicaciones, eventos, proyectos y premios.</p>
+                
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="bd-placeholder-img" width="100" height="100" src="static\img\art.svg" alt="Descripción de la imagen"role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+                <h2 class="fw-normal">Curriculum digital</h2>
+                <p>Nuestro sistema registra marcadores por usuario qu epueden ser exportados y formna parte de las estadisticas que toma el departamento.</p>
+              </div>
+            </div>
+
+
+
+            <div class="cards">
+              <div class="card-single">
+                  <div class="card-flex">
+                      <div class="card-info">
+                          <div class="card-head">
+                              <span><b>Articulo</b></span>
+                              <small>Revistas y articulos publicados</small>
+                          </div>
+                          <h2 class="text-success">{{revista}}</h2>
+                          
+                      </div>
+                      <div class="card-chart">
+                          <span class="fas fa-book text-success"></span>
+                      </div>
+                  </div>
+              </div>
+      
+              <div class="card-single">
+                  <div class="card-flex">
+                      <div class="card-info">
+                          <div class="card-head">
+                              <span><b>Publicaciones</b></span>
+                              <small>Libros y capitulos.</small>
+                          </div>
+                          <h2 class="text-success">{{publi}}</h2>
+                        
+                      </div>
+                      <div class="card-chart">
+                          <span class="fas fa-book text-success"></span>
+                      </div>
+                  </div>
+              </div>
+      
+              <div class="card-single">
+                  <div class="card-flex">
+                      <div class="card-info">
+                          <div class="card-head">
+                            <span><b>Eventos</b></span>
+                            <small>Eventos en que he participado</small>
+                          </div>
+                          <h2 class="text-success">{{evento}}</h2>
+                         
+                      </div>
+                      <div class="card-chart">
+                          <span class="fas fa-users text-success"></span>
+                      </div>
+                  </div>
+              </div>
+      
+              <div class="card-single">
+                  <div class="card-flex">
+                      <div class="card-info">
+                          <div class="card-head">
+                              <span><b>Recursos</b></span>
+                              <small>Resumen</small>
+                          </div>
+                          <h2 class="text-success">{{proyecto}}</h2>
+                        
+                      </div>
+                      <div class="card-chart">
+                          <span class="fas fa-users text-success"></span>
+                      </div>
+                  </div>
+              </div>
+      
+              <div class="card-single">
+                  <div class="card-flex">
+                      <div class="card-info">
+                          <div class="card-head">
+                              <span><b>Premio</b></span>
+                              <small>Premios que he ganado</small>
+                          </div>
+                          <h2 class="text-success">{{premio}}</h2>
+                          
+                      </div>
+                      <div class="card-chart">
+                          <span class="fas fa-trophy text-success"></span>
+                      </div>
+                  </div>
+              </div>
+>
+          </div>
+      
+          <hr class="my-4">
+      
+
+            <footer class="my-5 pt-5 text-success text-center text-small">
+                <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+            </footer> 
+        </div>
+
+    
+{% endblock %}
+ 

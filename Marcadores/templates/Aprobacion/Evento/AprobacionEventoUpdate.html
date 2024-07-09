@@ -1,0 +1,106 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Detalles del Evento{% endblock %}
+<link rel="stylesheet" href="{% static 'css\form-control-text.css.css' %}">
+
+{% block main %} 
+    <div class="container">
+        <main>
+            <hr class="my-4">
+            <div class="row g-5">
+
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4 "{% static 'img\Id UHo-03-white.png' %} alt="" width="200" height="100">
+                    <h2>Añadir Evento</h2>
+                </div>
+                <div class="container">
+                    <main>
+                        <hr class="my-4 mb-0">
+                        <div class="row g-5">
+                            <div class="row g-5">
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>caracter: </b></label>
+                                    <label class="form-control">{{ evento.caracter }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>tipo: </b></label>
+                                    <label class="form-control">{{ evento.tipo }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>titulo: </b></label>
+                                    <label class="form-control">{{ evento.titulo }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                  
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Investigador: </b></label>
+                                    <label class="form-control text">   {% for autor in evento.autores.all %}
+                                        {{autor.last_name}},{{autor.first_name}}
+                                   </label>
+                                   {% endfor %}
+                                </div>
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>isbn: </b></label>
+                                    <label class="form-control">{{ evento.isbn }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Publicacion: </b></label>
+                                    <label class="form-control">{{ evento.publicacion }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha: </b></label>
+                                    <label class="form-control">{{ evento.fecha }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Certificado: </b></label>
+                                    <label class="form-control">{{ evento.certificado }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Facultad: </b></label>
+                                    <label class="form-control">{{ evento.facultad }}</label>
+                                </div>
+                                
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Presencialidad: </b></label>
+                                    <label class="form-control">{{ evento.presencialidad }}</label>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                        <hr class="my-4">
+
+                        <form method="POST">
+                            {% csrf_token %}
+    
+                            <div class="col-sm-4 mt-0">
+                                <label class="input-group-text w-100 btn bg-success"><b>Aprobacion: </b></label>
+                                {{ form.aprobacion }}
+                            </div>
+    
+                            <hr class="my-4">
+                            <div class="text-center" style="padding-top: 50px;">
+    
+                            <button class="w-50 btn btn-success btn-lg" type="submit"><b>Guardar</b></button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+                <div class="text-center" style="padding-top: 50px;">
+                 <a href="{% url 'EventoPendientes' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+                 </div>
+            {% endblock %}
+          
+    
+            {% block scripts %}
+                <script src="{% static 'js/dataTable_init.js' %}"></script>
+                <script src="{% static 'libs/datatables-1.10.25/js/jquery.dataTables.min.js' %}"></script>
+            {% endblock %}
+            

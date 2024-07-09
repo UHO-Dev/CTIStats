@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}RegiTech UHo(Laptop){% endblock %}
+
+{% block titulo %} Expedientes de Laptop {% endblock %}
+
+{% block buttons %}
+    <a class="btn btn-success" href="{% url 'RecursoCreateprueba' %}"><b>A&ntilde;adir</b></a>
+{% endblock %}
+
+{% block main %}
+    <div class="table-responsive">
+        <table class="table table-sm" id="example">
+            <thead class="bg-light">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Titulo</th>
+                    
+                </tr>
+            </thead>
+            {% for prueba in object_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{componente.titulo }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}   

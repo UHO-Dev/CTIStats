@@ -1,0 +1,138 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Editar PubliUnica{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Editar</h2>
+      </div>
+      
+
+
+      <div class="row g-5">
+        <div class="col-md-15 col-lg-15">
+          <form class="needs-validation" action="#" novalidate method="post">
+            {% csrf_token %}
+            <div class="row g-3">
+            
+      <div class="col-sm-6">
+        <label for="titulo" class="form-label">Título</label>
+        {{ form.titulo }}
+        <div class="invalid-feedback">
+          Es requerido un título válido.
+        </div>
+      </div>
+
+              <div class="col-sm-6">
+                <label for="isbn" class="form-label">ISBN</label>
+                {{ form.isbn }}
+                <div class="invalid-feedback">
+                  Es requerido un ISBN válido.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="id_fecha_creacion" class="form-label">Fecha de Creación</label>
+                {{ form.fecha_creacion }}
+                <div class="invalid-feedback">
+                  Es requerida una fecha válida.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="id_categoriaCientifica" class="form-label">Categoría Científica</label>
+                {{ form.categoriaCientifica }}
+                <div class="invalid-feedback">
+                  Es requerida una categoría científica.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="id_facultad" class="form-label">Facultad</label>
+                {{ form.facultad }}
+                <div class="invalid-feedback">
+                  Es requerida una facultad válida.
+                </div>
+              </div>
+
+
+              <div class="col-sm-6">
+                <label for="id_departamento" class="form-label">Departamento</label>
+                {{ form.departamento }}
+                <div class="invalid-feedback">
+                  Es requerido un departamento válido.
+                </div>
+              </div>
+
+              <div class="col-3">
+                <label for="autores" class="form-label">Autores</label>
+                {{ form.autores }}
+                <div class="invalid-feedback">
+                  Es requerido al menos un autor.
+                </div>
+              </div>
+              <div class="col-3">
+                <label for="editorial" class="form-label">editorial</label>
+                {{ form.editorial }}
+                <div class="invalid-feedback">
+                  Es requerido al menos un autor.
+                </div>
+              </div>
+              <div class="col-3">
+                <label for="capitulo" class="form-label">capitulo</label>
+                {{ form.capitulo }}
+                <div class="invalid-feedback">
+                  Es requerido al menos un autor.
+                </div>
+              </div>
+              <div class="col-3">
+                <label for="volumen" class="form-label">Volumen</label>
+                {{ form.volumen }}
+                <div class="invalid-feedback">
+                  Es requerido al menos un autor.
+                </div>
+              </div>
+              <div class="col-3">
+                <label for="pais" class="form-label">Pais</label>
+                {{ form.pais }}
+                <div class="invalid-feedback">
+                  Es requerido al menos un autor.
+                </div>
+              </div>
+
+            </div>
+
+            <hr class="my-4">
+
+            <div class="text-center" style="padding-top: 50px;">
+              <button class="w-100 btn btn-success btn-lg mt-0" type="submit">Guardar</button>
+              <a href="{% url 'dashboard' %}" class="w-100 btn btn-success btn-lg mt-0" style="margin-top: 20px;">Atr&aacute;s</a>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2024 Uho</p>
+      <ul class="list-inline">
+  
+      </ul>
+    </footer>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

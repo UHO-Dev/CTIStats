@@ -1,0 +1,114 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %} Añadir Premio{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="{% static 'img/Id UHo-03.png' %}" alt="" width="72" height="57">
+                <h2>A&ntilde;adir Premio</h2>
+           
+            </div>
+            {% if form.error %}
+            {{form.error}}
+            {%endif%}
+            <div class="row g-5">
+                <div class="col-md-15 col-lg-15">
+                    <form class="needs-validation" novalidate method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-4">
+                                <label for="nombre_programa" class="form-label">Titulo</label>
+                                {{ form.codigo_programa }}
+                                <div class="invalid-feedback">
+                                    Es requerido un nombre v&aacute;lido
+                                </div>
+                            </div>
+
+                                <div class="col-sm-4">
+                                    <label for="nombre_programa" class="form-label">fecha</label>
+                                    {{ form.nombre_programa}}
+                                   
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="director_programa" class="form-label">director_programa</label>
+                                    {{ form.director_programa }}
+                                    <div class="invalid-feedback">
+                                    Es requerido por lo menos un autor.
+                                    </div>
+                                </div>
+                
+                            <div class="col-6">
+                                <label for="facultad" class="form-label">facultad</label>
+                                {{ form.facultad}}
+                            </div>
+
+                            <div class="col-6">
+                                <label for="departamento" class="form-label">facultad</label>
+                                {{ form.departamento}}
+                            </div>
+
+
+                            <div class="col-6">
+                                <label for="tipo_programa" class="form-label">tipo_programa</label>
+                                {{ form.tipo_programa}}
+                            </div>
+
+
+                            <div class="col-6">
+                                <label for="descripcion" class="form-label">descripcion</label>
+                                {{ form.descripcion}}
+                            </div>
+
+
+                            <div class="col-6">
+                                <label for="fecha_inicio" class="form-label">fecha_inicio</label>
+                                {{ form.fecha_inicio}}
+                            </div>
+
+
+                            <div class="col-6">
+                                <label for="fecha_fin" class="form-label">fecha_fin</label>
+                                {{ form.fecha_fin}}
+                            </div>
+
+
+                        
+                            <div class="col-6">
+                                <label for="presupuesto_asignado" class="form-label">presupuesto_asignado</label>
+                                {{ form.presupuesto_asignado}}
+                            </div>
+
+                        
+                            <div class="col-6">
+                                <label for="presupuesto_asignado" class="form-label">presupuesto_asignado</label>
+                                {{ form.presupuesto_asignado}}
+                            </div>
+
+                        </div>
+
+                        <div class="text-center" style="padding-top: 50px;">
+                            <button class="w-50 btn btn-primary btn-lg" type="submit">Guardar</button>
+                            <a href="{% url 'dashboard' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+      
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

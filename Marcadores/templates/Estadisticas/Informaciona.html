@@ -1,0 +1,602 @@
+{% extends 'index.html' %}
+{% load static %}
+data
+{% block title %}RegiTech UHo(Resumen){% endblock %}
+
+{% block titulo %}<b class="text-success">Resumen</b>{% endblock %}
+
+{% block css %}
+    <script src="{% static 'libs/highcharts/code/highcharts.js' %}"></script>
+    <script src="{% static 'libs/highcharts/code/modules/exporting.js' %}"></script>
+    <script src="{% static 'libs/highcharts/code/modules/accessibility.js' %}"></script>
+    <script src="{% static 'libs/highcharts/code/highcharts.js' %}"></script>
+    <script src="{% static 'libs/highcharts/code/modules/exporting.js' %}"></script>
+    <script src="{% static 'libs/highcharts/code/modules/accessibility.js' %}"></script>
+    <style type="text/css">
+        .highcharts-figure,
+        .highcharts-data-table table {
+            min-width: 320px;
+            max-width: 500px;
+            margin: 1em auto;
+        }
+
+        #container {
+            height: 400px;
+        }
+
+        .highcharts-data-table table {
+            font-family: Verdana, sans-serif;
+            border-collapse: collapse;
+            border: 1px solid #ebebeb;
+            margin: 10px auto;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .highcharts-data-table th {
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table td,
+        .highcharts-data-table th,
+        .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+
+        .highcharts-data-table thead tr,
+        .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+    </style>
+{% endblock %}
+
+{% block buttons %}
+    {% if pendientes %}
+        <span class="badge bg-success rounded-pill fas fa-bell fa-shake" data-bs-toggle="modal" data-bs-target="#notificacion"> {{ pendientes }}</span>
+    {% else %} {% endif %}
+    <a class="btn btn-secondary" href="{% url 'InvestigadorDetail' %}"><b><i class="fas fa-user-circle"></i> {{ user.username | upper }}</b></a>
+{% endblock %}
+
+{% block main %}
+    <!-- MODAL -->
+    <div class="modal fade" id="notificacion" tabindex="-1" aria-labelledby="modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark" id="modal-label">Pendientes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    Quedan <span class="badge bg-success rounded-pill">{{ pendientes }}</span> expediente pendiente por revisi&oacute;n
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success" href="{% url 'PubliUnicaCreate' %}"><b>Revisar</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL -->
+    <article class="my-3" id="navs">
+        <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+          <h3>Stats</h3>
+        </div>
+
+  
+          <div class="bd-example-snippet bd-code-snippet"><div class="bd-example">
+          <nav>
+            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Usuarios</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Publicacion</button>
+              <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Marcadores</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <p>
+                <script type="text/javascript">
+
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: 0,
+                        plotShadow: false
+                    },
+                    title: {
+                        text: 'Usuarios en el sistema',
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    accessibility: {
+                        point: {
+                            valueSuffix: '%'
+                        }
+                    },
+                    plotOptions: {
+                        pie: {
+                            dataLabels: {
+                                enabled: true,
+                                distance: 30,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: 'white'
+                                }
+                            },
+                            startAngle: -90,
+                            endAngle: 90,
+                            center: ['50%', '75%'],
+                            size: '110%'
+                        }
+                    },
+                    series: [{
+                        type: 'pie',
+                        name: 'Porcentaje',
+                        innerSize: '50%',
+                        data: [
+                            ['Licenciados', {{investigador_li}}],
+                            ['Doctores', {{investigador_mas}}],
+                            ['Masters', {{investigador_doc}}],
+                        ]
+                    }]
+                });
+            </p>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <p>This is some placeholder content the <strong>Profile tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+            </div>
+          </div>
+          </div>
+
+  
+  
+      
+    <hr class="my-4">
+
+    <div class="row d-flex">
+        <div class="col-sm-4">
+            <figure class="highcharts-figure">
+                <div id="chart-tipo"></div>        
+            </figure>
+            <figcaption>
+                <b class="text-success">Cantidad de Recursos por Tipo</b>
+            </figcaption>
+        </div>
+
+        <div class="col-sm-4">
+            <figure class="highcharts-figure">
+                <div id="chart-cc"></div>        
+            </figure>
+            <figcaption>
+                <b class="text-success">Cantidad de Recursos por Centros de Costos</b>
+            </figcaption>
+        </div>
+
+        <div class="col-sm-4">
+            <figure class="highcharts-figure">
+                <div id="chart-estados"></div>        
+            </figure>
+            <figcaption>
+                <b class="text-success">Cantidad de Recursos por Estados T&eacute;cnicos</b>
+            </figcaption>
+        </div>
+    </div>
+
+    <hr class="my-4">    
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        Highcharts.chart('chart-tipo', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Tipos de Recursos'
+            },
+            
+            plotOptions: {
+                series: {
+                    allowPointSelect: false,
+                    cursor: 'pointer',
+                    dataLabels: [{
+                        enabled: true,
+                        distance: -40,
+                        format: '{point.percentage:.1f}',
+                        style: {
+                            fontSize: '1.2em',
+                            textOutline: 'none',
+                            opacity: 0.7
+                        },
+                        filter: {
+                            operator: '>',
+                            property: 'percentage',
+                            value: 10
+                        }
+                    }]
+                }
+            },
+            series: [
+                {
+                    name: 'Cantidad',
+                    colorByPoint: true,
+                    data: [
+                        {% for i in count_tipo %}
+                        {
+                            name: '{{ i.tipo.nombre }}',
+                            y: {{ i.total }}
+                        },
+                        {% endfor %}
+                    ]
+                }
+            ]
+        });
+    </script>
+
+    <script type="text/javascript">
+        Highcharts.chart('chart-cc', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Centros de Costos'
+            },
+            
+            plotOptions: {
+                series: {
+                    allowPointSelect: false,
+                    cursor: 'pointer',
+                    dataLabels: [{
+                        enabled: true,
+                        distance: -40,
+                        format: '{point.percentage:.1f}',
+                        style: {
+                            fontSize: '1.2em',
+                            textOutline: 'none',
+                            opacity: 0.7
+                        },
+                        filter: {
+                            operator: '>',
+                            property: 'percentage',
+                            value: 10
+                        }
+                    }]
+                }
+            },
+            series: [
+                {
+                    name: 'Cantidad',
+                    colorByPoint: true,
+                    data: [
+                        {% for i in count_cc %}
+                        {
+                            name: '{{ i.centro_costo }}',
+                            y: {{ i.total }}
+                        },
+                        {% endfor %}
+                    ]
+                }
+            ]
+        });
+    </script>
+
+    <script type="text/javascript">
+        Highcharts.chart('chart-estados', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Estados T&eacute;cnicos'
+            },
+            
+            plotOptions: {
+                series: {
+                    allowPointSelect: false,
+                    cursor: 'pointer',
+                    dataLabels: [{
+                        enabled: true,
+                        distance: -40,
+                        format: '{point.percentage:.1f}',
+                        style: {
+                            fontSize: '1.2em',
+                            textOutline: 'none',
+                            opacity: 0.7
+                        },
+                        filter: {
+                            operator: '>',
+                            property: 'percentage',
+                            value: 10
+                        }
+                    }]
+                }
+            },
+            series: [
+                {
+                    name: 'Cantidad',
+                    colorByPoint: true,
+                    data: [
+                        {% for i in count_estado %}
+                        {
+                            name: '{{ i.estado }}',
+                            y: {{ i.total }}
+                        },
+                        {% endfor %}
+                    ]
+                }
+            ]
+        });
+    </script>
+<style>
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 3rem;
+        margin-top: 2rem;
+        color: black;
+    }
+
+    .card-single {
+        background: #e3e3e3;
+        box-shadow: 4px 4px 10px rgb(255, 255, 255, 0.4);
+        border-radius: 2px;
+        padding: 3%;
+    }
+
+    .card-flex {
+        display: grid;
+        grid-template-columns: 60% auto;
+        align-items: center;
+    }
+
+    .card-single-chart {
+        box-shadow: 4px 4px 10px rgb(255, 255, 255, 0.4);
+        border-radius: 2px;
+        padding: 3%;
+    }
+
+    .card-head span {
+        display: block;
+        text-transform: uppercase;
+        color: #555;
+        font-size: .9rem;
+    }
+
+    .card-head small {
+        font-weight: 600;
+        color: #555;
+    }
+
+    .card-info h2 {
+        font-size: 2.2rem;
+        color: #333;
+    }
+
+    .card-chart span {
+        font-size: 5rem;
+    }
+</style>
+<div class="cards">
+        <div class="card-single">
+            <div class="card-flex">
+                <div class="card-info">
+                    <div class="card-head">
+                        <span><b>Pendientes</b></span>
+                        <small>Resumen</small>
+                    </div>
+                    <h2 class="text-danger">{{pendientes}}</h2>
+                    <small>Expedientes por Revisi&oacute;n</small>
+                </div>
+                <div class="card-chart">
+                    <span class="fas fa-bell text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-single">
+            <div class="card-flex">
+                <div class="card-info">
+                    <div class="card-head">
+                        <span><b>Usuarios</b></span>
+                        <small>Resumen</small>
+                    </div>
+                    <h2 class="text-success">{{investigador_count}}</h2>
+                    <small>Usuarios del Sistema</small>
+                </div>
+                <div class="card-chart">
+                    <span class="fas fa-user-circle text-success"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-single">
+            <div class="card-flex">
+                <div class="card-info">
+                    <div class="card-head">
+                        <span><b>Tipos de Recursos</b></span>
+                        <small>Resumen</small>
+                    </div>
+                    <h2 class="text-success">{{tipos}}</h2>
+                    <small>Tipos de Recursos Disponibles</small>
+                </div>
+                <div class="card-chart">
+                    <span class="fas fa-gear text-warning"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-single">
+            <div class="card-flex">
+                <div class="card-info">
+                    <div class="card-head">
+                        <span><b>Recursos</b></span>
+                        <small>Resumen</small>
+                    </div>
+                    <h2 class="text-success">{{recursos}}</h2>
+                    <small>Recursos TICs registrados</small>
+                </div>
+                <div class="card-chart">
+                    <span class="fas fa-box text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-single">
+            <div class="card-flex">
+                <div class="card-info">
+                    <div class="card-head">
+                        <span><b>Centros de Costos</b></span>
+                        <small>Resumen</small>
+                    </div>
+                    <h2 class="text-success">{{ubicaciones}}</h2>
+                    <small>Centros de Costos</small>
+                </div>
+                <div class="card-chart">
+                    <span class="fas fa-map-marker text-success"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-single">
+            <div class="card-flex">
+                <div class="card-info">
+                    <div class="card-head">
+                        <span><b>Ordenes de Servicio</b></span>
+                        <small>Resumen</small>
+                    </div>
+                    <h2 class="text-success">{{orden}}</h2>
+                    <small>Ordenes de Servicio</small>
+                </div>
+                <div class="card-chart">
+                    <span class="fas fa-clipboard text-warning"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h3 class="text-success"><b>Pendientes</b></h3>
+    <div>
+        <h6 class="text-white">Recursos Pendientes:</h3>
+        <a href={% url 'PubliSeriadaList' %}><span class="btn btn-info"><i class="fas fa-user"></i>Articulos: <b>{{ publi_seriada_count }}</b></span></a>
+        <a href={% url 'PubliSeriadaList' %}><span class="btn btn-success"><i class="fas fa-check-square"></i>Revision: <b>{{ publi_seriada_pendiente }}</b></span></a>
+    </div>
+    <hr class="my-4">
+
+  
+            <div class="tab-content" id="nav-tabContent">
+                <!-- DEPARTAMENTOS -->
+                <div class="tab-pane fade show active" id="nav-departamentos" role="tabpanel" aria-labelledby="nav-departamentos-tab">
+                    <div class="card-single-chart col-sm-12 d-flex mb-3">
+                        <table class="table table-sm" id="departamentos">
+                            <thead class="text-dark bg-light">
+                                <tr>
+                                    <th scope="col" class="col-sm-1">No</th>
+                                    <th scope="col" class="col-sm-6">Departamento</th>
+                                    <th scope="col" class="col-sm-4">Tipo</th>
+                                    <th scope="col" class="col-sm-1">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-light">
+                                {% for i in data_dep %}
+                                    <tr>
+                                        <td><b>{{ forloop.counter }}</b></td>
+                                        <td><b>{{ i.0 }}</b></td>
+                                        <td><b>{{ i.1 }}</b></td>
+                                        <td><span class="badge bg-success rounded-pill">{{ i.2 }}</span></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- ESTADO TECNICO -->
+                <div class="tab-pane fade" id="nav-estado" role="tabpanel" aria-labelledby="nav-estado-tab">
+                    <div class="card-single-chart col-sm-12 d-flex mb-3">
+                        <table class="table table-sm" id="estado-resumen">
+                            <thead class="text-dark bg-light">
+                                <tr>
+                                    <th scope="col" class="col-sm-1">No</th>
+                                    <th scope="col" class="col-sm-6">Estado T&eacute;cnico</th>
+                                    <th scope="col" class="col-sm-4">Tipo</th>
+                                    <th scope="col" class="col-sm-1">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-light">
+                                {% for i in data_estado %}
+                                    <tr>
+                                        <td><b>{{ forloop.counter }}</b></td>
+                                        <td><b>
+                                            {% if i.0 == 'Funcionando' %}
+                                                <span class="badge bg-success rounded-pill">
+                                                    {{ i.0 }}
+                                                </span>
+                                            {% elif i.0 == 'Roto' %}
+                                                <span class="badge bg-warning rounded-pill">
+                                                    {{ i.0 }}
+                                                </span>
+                                            {% elif i.0 == 'Solicitud de Baja' %}
+                                                <span class="badge bg-danger rounded-pill">
+                                                    {{ i.0 }}
+                                                </span>
+                                            {% elif i.0 == 'Stock' %}
+                                                <span class="badge bg-primary rounded-pill">
+                                                    {{ i.0 }}
+                                                </span>
+                                            {% else %}
+                                                <span class="badge bg-black rounded-pill">
+                                                    {{ i.0 }}
+                                                </span>
+                                            {% endif %}
+                                        </b></td>
+                                        <td><b>{{ i.1 }}</b></td>
+                                        <td><span class="badge bg-success rounded-pill">{{ i.2 }}</span></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- ORDEN SERVICIO -->
+                <div class="tab-pane fade" id="nav-orden" role="tabpanel" aria-labelledby="nav-estado-tab">
+                    <div class="card-single-chart col-sm-12 d-flex">
+                        <table class="table table-sm" id="orden-resumen">
+                            <thead class="text-dark bg-light">
+                                <tr>
+                                    <th scope="col" class="col-sm-1">No</th>
+                                    <th scope="col" class="col-sm-7">Ticket</th>
+                                    <th scope="col" class="col-sm-4">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-light">
+                                {% for i in orden_resumen %}
+                                    <tr>
+                                        <td><b>{{ forloop.counter }}</b></td>
+                                        <td><b>TK-{{ i.orden }}</b></td>
+                                        <td><b>{{ i.estado }}</b></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

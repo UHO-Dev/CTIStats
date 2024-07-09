@@ -1,0 +1,11 @@
+.form-control.text {
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px; 
+  }
+  label {
+    display: inline-block;
+  }

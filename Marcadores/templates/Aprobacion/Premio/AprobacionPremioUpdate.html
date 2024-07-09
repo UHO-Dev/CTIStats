@@ -1,0 +1,95 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block title %}Premios{% endblock %}
+
+<link rel="stylesheet" href="{% static 'css\form-control text.css' %}">
+{% block css %}
+ 
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                <h2>Informaci&oacute;n del Premio</h2>
+            </div>
+
+            <div class="container">
+                <main>
+                    <hr class="my-4 mb-0">
+                    <div class="row g-5">
+                        <div class="row g-5">
+
+                          
+        <div class="row g-5">
+            <div class="col-md-15 col-lg-15">
+                    <div class="row g-3">
+                        <div class="col-4">
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Título: </b></label>
+                            <label class="form-control">{{ premio.titulo }}</label>
+                        </div>
+                        <div class="col-4">
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha: </b></label>
+                            <label class="form-control">{{ premio.fecha }}</label>
+                        </div>
+                        <div class="col-4">
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Facultad: </b></label>
+                            <label class="form-control">{{ premio.facultad }}</label>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-4">
+                                  
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Premiados: </b></label>
+                            <label class="form-control text">   {% for autor in premio.autores.all %}
+                                {{autor.last_name}},{{autor.first_name}}
+                           </label>
+                           {% endfor %}
+                        </div>
+                        <div class="col-4">
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>URL: </b></label>
+                            <label class="form-control"><a href="{{ premio.url }}" target="_blank">{{ premio.url }}</a></label>
+                        </div>
+                        <div class="col-4">
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Tipo: </b></label>
+                            <label class="form-control">{{ premio.tipo }}</label>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <label class="input-group-text w-100 btn btn-outline-info"><b>Caracter del Premio: </b></label>
+                            <label class="form-control">{{ premio.caracter_premio }}</label>
+                        </div>
+                    </div>
+                </div>
+                    <hr class="my-4">
+                
+                  
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="col-sm-4 mt-0">
+                            <label class="input-group-text w-100 btn bg-success"><b>Aprobacion: </b></label>
+                            {{ form.aprobacion }}
+                        </div>
+
+                        <hr class="my-4">
+
+                        <button class="w-100 btn btn-success btn-lg" type="submit"><b>Guardar</b></button>
+                    </form>
+                </div>
+            </div>
+        </main>
+                        <div class="text-center" style="padding-top: 50px;">
+                            <a href="{% url 'PremioPendientes' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+                        </div>
+        {% endblock %}
+      
+
+        {% block scripts %}
+            <script src="{% static 'js/dataTable_init.js' %}"></script>
+            <script src="{% static 'libs/datatables-1.10.25/js/jquery.dataTables.min.js' %}"></script>
+        {% endblock %}
+        

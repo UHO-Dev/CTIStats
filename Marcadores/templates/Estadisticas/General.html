@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Publicaciones{% endblock %}
+
+{% block titulo %} Publicaciones {% endblock %}
+
+{% block main %} 
+    <main>
+        <div class="album py-1">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2">
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
+                            <div class="card-body">
+                                <p class="card-text text-dark">Articulos <b>PC</b>.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{% url 'PubliSeriadaCreate' %}" class="btn btn-sm btn-outline-secondary"><b>A&ntilde;adir</b></a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-sm btn-outline-secondary"><b>Aprobaci&oacute;n</b></a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href='{% url 'PubliSeriadaList' %}' class="btn btn-sm btn-outline-secondary"><b>Listado</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
+                            <div class="card-body">
+                                <p class="card-text text-dark">Publicasiones: <b>Laptop</b>.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{% url 'PubliUnicaCreate' %}" class="btn btn-sm btn-outline-secondary"><b>A&ntilde;adir</b></a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href="#" class="btn btn-sm btn-outline-secondary"><b>Aprobaci&oacute;n</b></a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a href='{% url 'PubliUnicaCreate' %}' class="btn-sm btn btn-outline-secondary"><b>Listado</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}

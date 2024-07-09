@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Publicacion{% endblock %}
+
+
+{% block css %}
+ 
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4"  src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+                <h2>Informaci&oacute;n del Articulo</h2>
+            </div>
+
+         
+                <div class="container">
+                    <main>
+                        <hr class="my-4 mb-0">
+                        <div class="row g-5">
+                            <div class="row g-5">
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Titulo: </b></label>
+                                    <label class="form-control">{{ PubliUnica.titulo }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha de creacion: </b></label>
+                                    <label class="form-control">{{ PubliUnica.fecha_creacion }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Facultad </b></label>
+                                    <label class="form-control">{{ PubliUnica.facultad }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Investigador: </b></label>
+                                    <label class="form-control text">{{ PubliUnica.autores }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Departamento: </b></label>
+                                    <label class="form-control">{{ PubliUnica.departamento }}</label>
+                                </div>
+            
+                                <div class="col-4">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b>Departamento: </b></label>
+                                    <label class="form-control">{{ PubliUnica.categoriaCientifica }}</label>
+                                </div>
+            
+                                <div class="col-4 mt-0">
+                                    <label class="input-group-text w-100 btn btn-outline-info"><b> ISBN: </b></label>
+                                    <label class="form-control">{{ PubliUnica.isbn }}</label>
+                                </div>
+            
+                                <hr class="my-4">
+
+                                <form method="POST">
+                                    {% csrf_token %}
+
+                                    <div class="col-sm-4 mt-0">
+                                        <label class="input-group-text w-100 btn bg-success"><b>Aprobacion: </b></label>
+                                        {{ form.aprobacion }}
+                                    </div>
+
+                                    <hr class="my-4">
+
+                                    <button class="w-100 btn btn-success btn-lg" type="submit"><b>Guardar</b></button>
+                                </form>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+{% endblock %}
+                                
+{% block buttons %}
+    <a class="btn btn-success" href="{% url 'PubliUnicaList' %}"><b>Atras</b></a>
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}
+        

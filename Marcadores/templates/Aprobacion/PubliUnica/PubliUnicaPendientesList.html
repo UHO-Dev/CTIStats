@@ -1,0 +1,69 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block title %}Listado de Publicaciones{% endblock %}
+
+{% block main %}
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Listado de Publicaciones</h2>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="table-container">
+            <table id="example" class="display responsive table table-striped table-bordered dt-responsive">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th class="col-1">No</th>
+                        <th class="col-3">Autor/es</th>
+                        <th class="col-2">Titulo</th>
+                        <th class="col-2">ISSN</th>
+                        <th class="col-2">Fecha</th>
+                        <th class="col-1">Estado</th>
+                        <th class="col-2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for PubliUnica in publiunica_pendientes %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                {% for autor in PubliUnica.autores.all %}
+                                    {{autor.last_name}},{{autor.first_name}}
+                                {% endfor %}
+                            </td>
+                            <td>{{PubliUnica.titulo}}</td>
+                            <td>{{PubliUnica.issn}}</td>
+                            <td>{{PubliUnica.fecha_creacion}}</td>
+                            <td>
+                                <b>
+                                    <span class="badge bg-warning pill text-dark">
+                                        {{ PubliUnica.aprobacion }}
+                                    </span>
+                                </b>
+                            </td>
+                            <td>
+                                <b>
+                                    <a href="{% url 'PubliUnicaDetail' PubliUnica.id %}"><i class="fas fa-eye px-2 text-success"></i></a>
+                                    <a href="{% url 'AprobacionPubliUnicaUpdate' PubliUnica.id %}"><i class="fas fa-pen px-2 text-warning"></i></a>
+                                </b>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="container-btn">
+                <a class="btn btn-primary btn-dark add" href="{% url 'PubliUnicaCreate' %}">A&ntilde;adir</a>
+                <a class="btn btn-primary btn-dark back" href="{% url 'dashboard' %}">Atr&aacute;s</a>  
+            </div> 
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/dataTable_init.js' %}"></script>
+    <script src="{% static 'libs/datatables-1.10.25/js/jquery.dataTables.min.js' %}"></script>
+{% endblock %}

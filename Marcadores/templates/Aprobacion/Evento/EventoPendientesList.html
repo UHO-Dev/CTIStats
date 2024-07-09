@@ -1,0 +1,69 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block title %}Listado de Evento{% endblock %}
+
+{% block main %}
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4"  src={% static 'img\Id UHo-03-white.png' %} alt="" width="200" height="100">
+        <h2>Listado de Eventos</h2>
+        
+    </div>
+
+    <div class="col-sm-12">
+        <div class="table-container">
+            <table id="example" class="display responsive table table-striped table-bordered dt-responsive">
+                <thead class="bg-dark text-white">
+                <tr>
+                    <th class="col-1">No</th>
+                    <th class="col-3">Autor/es</th>
+                    <th class="col-1">Titulo</th>
+                    <th class="col-1">ISBN</th>
+                    <th class="col-1">Fecha</th>
+                    <th class="col-1">Estado</th>
+                    <th class="col-1">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in evento_pendientes %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            {% for autor in evento.autores.all %}
+                                {{autor.last_name}},{{autor.first_name}}
+                            {% endfor %}
+                        </td>
+                        <td>{{evento.titulo}}</td>
+                        <td>{{evento.isbn}}</td>
+                        <td>{{evento.fecha}}</td>
+                        <td>
+                            <b>
+                                <span class="badge bg-warning pill text-dark">
+                                    {{ evento.aprobacion }}
+                                </span>
+                            </b>
+                        <td>
+                            <b>
+                            <a href="{% url 'EventoDetail' evento.id %}"><i class="fas fa-eye px-2 text-success"></i></a>
+                            <a href="{% url 'AprobacionEventoUpdate' evento.id %}"><i class="fas fa-pen px-2 text-warning"></i></a>
+                        </b>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="container-btn">
+            <a class="btn btn-primary btn-dark add" href="{% url 'EventoCreate' %}">A&ntilde;adir</a>
+            <a class="btn btn-primary btn-dark back" href="{% url 'dashboard' %}">Atr&aacute;s</a>  
+        </div> 
+    </div>  
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/dataTable_init.js' %}"></script>
+    <script src="{% static 'libs/datatables-1.10.25/js/jquery.dataTables.min.js' %}"></script>
+{% endblock %}

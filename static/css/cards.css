@@ -1,0 +1,48 @@
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4rem;
+    margin-top: 3rem;
+    color: black;
+}
+
+.card-single {
+    background: #b8d0dd;
+    box-shadow: 4px 4px 10px rgb(0, 0, 0, 0.6);
+    border-radius: 2px;
+    padding: 3%;
+}
+
+.card-flex {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: center;
+}
+
+.card-single-chart {
+    box-shadow: 4px 4px 10px rgba(214, 214, 214, 0.4);
+    border-radius: 2px;
+    padding: 3%;
+}
+
+.card-head span {
+    display: block;
+    text-transform: uppercase;
+    color: #555;
+    font-size: .9rem;
+}
+
+.card-head small {
+    font-weight: 600;
+    color: #555;
+}
+
+.card-info h2 {
+    font-size: 2.2rem;
+    color: #333;
+}
+
+.card-chart span {
+    font-size: 5rem;
+}

@@ -1,0 +1,136 @@
+{% extends 'base_list.html' %}
+{% load static %}
+
+{% block title %} Añadir Investigador{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="{% static 'img/users.svg' %}" alt="" width="72" height="57">
+                <h2>A&ntilde;adir Investigador</h2>
+                <p class="lead">A&ntilde;adir Investigador</p>
+            </div>
+        
+            {% if form.error %}
+            {{form.error}}
+            {%endif%}
+   
+            <div class="row g-5">
+                <div class="col-md-15 col-lg-15">
+                    <form class="needs-validation" novalidate method="POST">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-4">
+                                <label for="username" class="form-label">Nombre de Usuario con @ al principio</label>
+                                {{form.username}}
+                                <div class="invalid-feedback">
+                                    Es requerido un nombre v&aacute;lido
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="area" class="form-label">Area laboral</label>
+                                {{ form.area}}
+                                <div class="invalid-feedback">
+                                    Es requerido una area v&aacute;lida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="email" class="form-label">Correo laboral</label>
+                                {{ form.email}}
+                                <div class="invalid-feedback">
+                                    Es requerido una correo v&aacute;lida.
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="rol" class="form-label">Rol</label>
+                                {{ form.rol}}
+                                <div class="invalid-feedback">
+                                    Es requerido una rol v&aacute;lido.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="facultad" class="form-label">Facultad</label>
+                                {{ form.facultad}}
+                                <div class="invalid-feedback">
+                                    Es requerido una facultad v&aacute;lida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="categoria_docente" class="form-label">Categor&iacute;a docente </label>
+                                {{ form.categoria_docente}}
+                                <div class="invalid-feedback">
+                                    Es requerido una facultad v&aacute;lida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="categoria_cientifica" class="form-label">Categor&iacute;a Cientifica</label>
+                                {{ form.categoria_cientifica}}
+                                <div class="invalid-feedback">
+                                    Es requerido una facultad v&aacute;lida.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="ci" class="form-label">Ci</label>
+                                {{ form.ci}}
+                                <div class="invalid-feedback">
+                                    Es requerido un ci v&aacute;lido y no repetido.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="orci" class="form-label">Orci</label>
+                                {{ form.orci}}
+                                <div class="invalid-feedback">
+                                    Es requerido un v&aacute;lido.
+                                </div>
+                            </div>
+
+
+                            <div class="col-4">
+                                <label for="password1" class="form-label">Password 1</label>
+                                {{ form.password1}}
+                            </div>
+
+                    
+
+                            <div class="col-sm-4">
+                                <label for="password2" class="form-label">Password2</label>
+                                {{ form.password2 }}
+                                <div class="invalid-feedback">
+                                    No coinciden
+                                </div>
+                            </div>
+
+          
+                
+                        <div class="text-center" style="padding-top: 50px;">
+                            <button class="w-50 btn btn-primary btn-lg" type="submit">Guardar</button>
+                            <a href="{% url 'dashboard' %}" class="w-50 btn btn-primary btn-lg" style="margin-top: 20px;">Atr&aacute;s</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+      
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}
+

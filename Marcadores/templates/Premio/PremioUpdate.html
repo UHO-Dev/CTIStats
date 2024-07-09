@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Editar Premio{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Editar</h2>
+      </div>
+      
+
+
+      <div class="row g-5">
+        <div class="col-md-15 col-lg-15">
+          <form class="needs-validation" action="#" novalidate method="post">
+            {% csrf_token %}
+            <div class="row g-3">
+            
+      <div class="col-sm-6">
+        <label for="titulo" class="form-label">Título</label>
+        {{ form.titulo }}
+        <div class="invalid-feedback">
+          Es requerido un título válido.
+        </div>
+      </div>
+
+              <div class="col-sm-6">
+                <label for="fecha" class="form-label">Fecha</label>
+                {{ form.fecha }}
+                <div class="invalid-feedback">
+                  Es requerida una fecha.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="facultad" class="form-label">Facultad</label>
+                {{ form.facultad }}
+                <div class="invalid-feedback">
+                  Es requerida una facultad.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="autores" class="form-label">Premiados</label>
+                {{ form.autores }}
+                <div class="invalid-feedback">
+                  Es requerido por lo menos premiado.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="tipo" class="form-label">Tipo</label>
+                {{ form.tipo }}
+                <div class="invalid-feedback">
+                  Es requerida un tipo válido.
+                </div>
+              </div>
+
+
+              <div class="col-sm-6">
+                <label for="caracter_premio" class="form-label">Caracter del premio</label>
+                {{ form.caracter_premio }}
+                <div class="invalid-feedback">
+                  Es requerido un Caracter.
+                </div>
+              </div>
+
+              <div class="col-3">
+                <label for="url" class="form-label">Autores</label>
+                {{ form.url }}
+                <div class="invalid-feedback">
+                  Es requeridoun url.
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="text-center" style="padding-top: 50px;">
+              <button class="w-50 btn btn-success btn-lg mt-0" type="submit">Guardar</button>
+              <a href="{% url 'dashboard' %}" class="w-50 btn btn-success btn-lg mt-0" style="margin-top: 20px;">Atr&aacute;s</a>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2024 Uho</p>
+      <ul class="list-inline">
+  
+      </ul>
+    </footer>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

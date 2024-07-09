@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}CTI(Perfil){% endblock %}
+
+{% block titulo %}Editar <b class="text-success">Perfil</b>{% endblock %}
+
+{% block buttons %}
+
+{% endblock %}
+
+{% block main %} 
+<div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Editar</h2>
+      </div>
+     
+            <hr class="my-4">
+            <div class="row g-5">
+                <form class="needs-validation" novalidate method="POST">
+                    {% csrf_token %}
+                    <div class="row g-5">
+                        <div class="col-sm-4">
+                            <label for="first_name" class="input-group-text w-100 btn btn-outline-info"><b>Nombre: </b></label>
+                            {{form.first_name}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="last_name" class="input-group-text w-100 btn btn-outline-info"><b>Apellidos: </b></label>
+                            {{form.last_name}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="categoria_cientifica" class="input-group-text w-100 btn btn-outline-info"><b>Categoria Cientifica: </b></label>
+                            {{form.categoria_cientifica}}
+                            <div class="invalid-feedback">
+                                Es requerido su correo electr&oacute;nico coorporativo.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="categoria_docente" class="input-group-text w-100 btn btn-outline-info"><b>Categoria Docente: </b></label>
+                            {{form.categoria_docente}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="perfil_google" class="input-group-text w-100 btn btn-outline-info"><b>Perfil Google: </b></label>
+                            {{form.perfil_google}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="perfil_researchgate" class="input-group-text w-100 btn btn-outline-info"><b>ReachGATE: </b></label>
+                            {{form.perfil_researchgate}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="orci" class="input-group-text w-100 btn btn-outline-info"><b>ORCI: </b></label>
+                            {{form.orci}}
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="facultad" class="input-group-text w-100 btn btn-outline-info"><b>Facultad: </b></label>
+                            {{form.facultad}}
+                        </div>
+
+
+
+                        <hr class="my-4">
+                        <div class="text-center" style="padding-top: 50px;">
+                    <button class="w-50 btn btn-success btn-lg" type="submit"><b>Registrar</b></button>
+                </form>
+            </div>
+        </main>
+    
+        <footer class="my-5 pt-5 text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

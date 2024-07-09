@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Prueba{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/dash.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %} 
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4" src="#" alt="" width="72" height="57">
+                <h2>A&ntilde;adir Componentes prueba</h2>
+                <p class="lead">A&ntilde;adir las pruebas.</p>
+            </div>
+                <form method="POST">
+                    {% csrf_token %}
+                        <div class="col-sm-6">
+                            <label for="titulo" class="form-label">Titulo: </label>
+                            {{form.titulo}}
+                            <div class="invalid-feedback">
+                    
+                            </div>
+                        </div>
+
+                      
+
+                    <button class="w-100 btn btn-success btn-lg" type="submit">Registrar</button>
+                    <a href="{% url 'RecursoCreateprueba' %}"class="w-100 btn btn-success btn-lg">Atr&aacute;s</a>
+
+                    <div class="text-center div-btn">
+                     
+                      </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

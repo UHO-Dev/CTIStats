@@ -1,0 +1,134 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Editar Evento{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+
+  <div class="container">
+    <main>
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'img/ID UHO-01.png' %}" alt="" width="200" height="100">
+        <h2>Editar</h2>
+      </div>
+      
+
+
+      <div class="row g-5">
+        <div class="col-md-15 col-lg-15">
+          <form class="needs-validation" action="#" novalidate method="post">
+            {% csrf_token %}
+            <div class="row g-3">
+            
+      <div class="col-sm-6">
+        <label for="titulo" class="form-label">Título</label>
+        {{ form.titulo }}
+        <div class="invalid-feedback">
+          Es requerido un título válido.
+        </div>
+      </div>
+
+              <div class="col-sm-6">
+                <label for="caracter" class="form-label">Caracter</label>
+                {{ form.caracter }}
+                <div class="invalid-feedback">
+                  Es requerida una caracter.
+                </div>
+              </div>
+              
+              <div class="col-sm-6">
+                <label for="fecha" class="form-label">Fecha</label>
+                {{ form.fecha }}
+                <div class="invalid-feedback">
+                  Es requerida una caracter.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="facultad" class="form-label">Fecha de Creación</label>
+                {{ form.facultad }}
+                <div class="invalid-feedback">
+                  Es requerida una facultad.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="autores" class="form-label">Premiados</label>
+                {{ form.autores }}
+                <div class="invalid-feedback">
+                  Es requerido por lo menos premiado.
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="tipo" class="form-label">Tipo</label>
+                {{ form.tipo }}
+                <div class="invalid-feedback">
+                  Es requerida un tipo válido.
+                </div>
+              </div>
+
+
+              <div class="col-sm-6">
+                <label for="isbn" class="form-label">ISBN</label>
+                {{ form.isbn }}
+                <div class="invalid-feedback">
+                  Es requerido un ISBN.
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="publicacion" class="form-label">Publicacion</label>
+                {{ form.publicacion }}
+                <div class="invalid-feedback">
+                  Es requerido una Publicacion.
+                </div>
+              </div>
+
+              <div class="col-6">
+                <label for="presencialidad" class="form-label">Presencialidad</label>
+                {{ form.presencialidad }}
+                <div class="invalid-feedback">
+                  Es requerido una Publicacion.
+                </div>
+              </div>     
+              
+              <div class="col-6">
+                <label for="certificado" class="form-label">Certificado</label>
+                {{ form.certificado }}
+                <div class="invalid-feedback">
+                  Es requerido una Publicacion.
+                </div>
+              </div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="text-center" style="padding-top: 50px;">
+              <button class="w-50 btn btn-success btn-lg" type="submit"><b>Registrar</b></button>
+              <a href="{% url 'EventoList' %}" class="w-50 btn btn-success btn-lg mt-0" style="margin-top: 20px;">Atr&aacute;s</a>
+            </div>
+          
+            
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2024 Uho</p>
+      <ul class="list-inline">
+  
+      </ul>
+    </footer>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

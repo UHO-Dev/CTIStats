@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}CTI(Perfil){% endblock %}
+
+{% block titulo %}Editar <b class="text-success">Perfil</b>{% endblock %}
+
+{% block buttons %}
+    <a class="btn btn-success" href="{% url 'dashboard' %}"><b>Listado</b></a>
+{% endblock %}
+
+{% block main %} 
+    <div class="container">
+        <main>
+            <hr class="my-4">
+            <div class="row g-5">
+                {% if msg %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{msg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+
+                <form class="needs-validation" novalidate method="POST">
+                    {% csrf_token %}
+                    <div class="row g-5">
+                        <div class="col-sm-4">
+                            <label for="first_name" class="input-group-text w-100 btn btn-outline-info"><b>Nombre: </b></label>
+                            {{form.first_name}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="last_name" class="input-group-text w-100 btn btn-outline-info"><b>Apellidos: </b></label>
+                            {{form.last_name}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="categoria_cientifica" class="input-group-text w-100 btn btn-outline-info"><b>CC: </b></label>
+                            {{form.categoria_cientifica}}
+                            <div class="invalid-feedback">
+                                <b class="text-info">Es requerido un CI v&aacute;lido.</b>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="categoria_docente" class="input-group-text w-100 btn btn-outline-info"><b>CD: </b></label>
+                            {{form.categoria_docente}}
+                            <div class="invalid-feedback">
+                                Es requerido su correo electr&oacute;nico coorporativo.
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="area" class="input-group-text w-100 btn btn-outline-info"><b>Area: </b></label>
+                            {{form.area}}
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label for="email" class="input-group-text w-100 btn btn-outline-info"><b>Perfil_google</b></label>
+                            {{form.perfil_google}}
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="email" class="input-group-text w-100 btn btn-outline-info"><b>Perfil Researchgate: </b></label>
+                            {{form.perfil_researchgate}}
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="ci" class="input-group-text w-100 btn btn-outline-info"><b>CI: </b></label>
+                            {{form.ci}}
+                        </div>
+                        <hr class="my-4">
+                    </div>
+                    <button class="w-100 btn btn-success btn-lg" type="submit"><b>Registrar</b></button>
+                </form>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/form.js' %}"></script>
+{% endblock %}

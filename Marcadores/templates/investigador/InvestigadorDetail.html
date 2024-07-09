@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block titulo %}
+    Detalles del Usuario <a class="btn btn-secondary"><b><i class="fas fa-user-circle"></i> {{ user.username | upper }}</b></a>
+    <a class="btn btn-warning" href="{#}" ><b><i class="fas fa-key"></i></b></a>
+    <a class="btn btn-success" href="{% url 'UpdatePerfil' user.pk %}" ><b><i class="fas fa-user-pen"></i></b></a>
+{% endblock %}
+
+{% block buttons %}
+    <a class="btn btn-success" href="{% url 'dashboard' %}"><b>Inicio</b></a>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <main>
+            <hr class="my-4 mb-0">
+            <div class="row g-5">
+                <div class="row g-5">
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Nombre: </b></label>
+                        <label class="form-control">{{ investigador.first_name }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Apellidos: </b></label>
+                        <label class="form-control">{{ investigador.last_name }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Nombre de Usuario: </b></label>
+                        <label class="form-control">
+                            {{ investigador.username }}
+                            
+                
+                        </label>
+                    </div>
+
+                    <hr class="my-4 mb-0">
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Correo Electr&oacute;nico: </b></label>
+                        <label class="form-control">{{ investigador.email }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Ultimo Acceso: </b></label>
+                        <label class="form-control">{{ investigador.last_login }}</label>    
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Fecha Registro: </b></label>
+                        <label class="form-control">{{ investigador.date_joined.date }}</label>
+                    </div>
+
+                    <hr class="my-4 mb-0">
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Carnet de Identidad: </b></label>
+                        <label class="form-control">{{ investigador.ci }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Nombre: </b></label>
+                        <label class="form-control">{{ investigador.first_name }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Apellidos: </b></label>
+                        <label class="form-control">{{ investigador.last_name }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Categoria Cientifica: </b></label>
+                        <label class="form-control">{{ investigador.categoria_cientifica }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Categoria Docente: </b></label>
+                        <label class="form-control">{{ investigador.categoria_docente }}</label>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label class="input-group-text w-100 btn btn-outline-info"><b>Area: </b></label>
+                        <label class="form-control">{{ investigador.area }}</label>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="container-btn">
+            <a class="btn btn-primary btn-dark add" href="{% url 'InvestigadorCreate' %}">A&ntilde;adir</a>
+            <a class="btn btn-primary btn-dark back" href="{% url 'dashboard' %}">Atr&aacute;s</a>  
+        </div> 
+    </div> 
+
+<!-- Botones de Accion -->
+
+        <footer class="my-5 pt-5 text-light text-center text-small">
+            <p class="mb-1">&copy; 2023–2024 Universidad de Holgu&iacute;n</p>
+        </footer>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}
